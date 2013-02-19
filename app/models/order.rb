@@ -4,4 +4,8 @@ class Order < ActiveRecord::Base
   belongs_to :customer
   has_one :item
   validates :customer_id, :presence=> {:message=>"Customer name must be provided"}
+  def convert_customer_name_to_id
+	customer=Customer.find_by_name(self.customer_name)
+	self.customer_id=customer.id unless customer.nil?
+  end
 end

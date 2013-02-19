@@ -20,12 +20,12 @@ module CustomersHelper
 			else
 				html+="
 				<tr>
-					<td>#{Items.find_by_id(x.item_id)}</td>
+					<td>#{(Item.find_by_id(x.item_id)).id}</td>
 					<td>#{x.quantity}</td>
 					<td>#{x.total}</td>
 				</tr>"
 			end
-		end	
+		end
 		html+="
 			</tbody
 		</table>"
