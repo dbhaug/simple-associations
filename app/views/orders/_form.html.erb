@@ -26,7 +26,11 @@
   <div class="field">
     <%= f.label :customer_name %><br />
     <%= f.text_field :customer_name,
-            :value=>customer_name(@order) %>
+            :value=>unless customer_name(@order).nil?
+                      customer_name(@order) 
+                    else 
+                      Customer.find_by_id(params[:customer_id]).name 
+                    end %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -1,27 +1,31 @@
 <h1>Listing orders</h1>
 
-<table>
-  <tr>
-    <th>Quantity</th>
-    <th>Item</th>
-    <th>Total</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <table>
+    <tr>
+      <th>Quantity</th>
+      <th>Item</th>
+      <th>Total</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+     <% unless !params[:customer_id].nil? %>
+      <%=@orders.each do |order| %>
+        <tr>
+          <td><%= order.quantity %></td>
+          <td><%= order.item.name %></td>
+          <td><%= order.total %></td>
+          <td><%= link_to 'Show', order %></td>
+          <td><%= link_to 'Edit', edit_order_path(order) %></td>
+          <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    <% if !params[:customer_id].nil?%>
+      <%= orders_for_customer(Customer.find_by_id(params[:customer_id])) %>
+    <% end %>
+  </table>
 
-<% @orders.each do |order| %>
-  <tr>
-    <td><%= order.quantity %></td>
-    <td><%= order.item %></td>
-    <td><%= order.total %></td>
-    <td><%= link_to 'Show', order %></td>
-    <td><%= link_to 'Edit', edit_order_path(order) %></td>
-    <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  <br/>
 
-<br />
-
-<%= link_to 'New Order', new_order_path %>
+  <%= link_to 'New Order', new_order_path %>

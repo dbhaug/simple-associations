@@ -5,8 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Customer.create([{name: 'Dan' phone: 1 contact: 'Dan'}, {name: 'Dan2' phone: 2 contact: 'Dan2'},
-		{name: 'Dan3' phone: 3 contact: 'Dan3'}])
+Customer.create([{name: 'Dan' phone: 1 contact: 'Dan'}])
 Item.create([{name: 'gum'},{name: 'sucker' },{name: 'apple'}])
 Order.create([{quantity: 1 item_id: 1 total: 1 customer_id: 1},
  {quantity: 2 item_id: 2 total: 2 customer_id: 2},
